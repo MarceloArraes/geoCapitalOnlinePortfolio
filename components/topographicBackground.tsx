@@ -65,7 +65,7 @@ function TopographicBackground() {
     window.addEventListener("resize", svgCover);
   }, []);
   return (
-    <div id="svg-container" className="container">
+    <div id="svg-container" className="container isolate">
       <svg
         width="602"
         height="450"
