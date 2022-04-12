@@ -1,16 +1,18 @@
 import mockup from "../../datamockup/mockup.json" assert { type: "json" };
+import resultMockup from "../../datamockup/resultMockup.json" assert { type: "json" };
+
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import CompanyCard from "../../components/companyCard";
 import TopographicBackground from "../../components/topographicBackground";
-import { uuid } from "uuidv4";
+import { v4 as uuidv4 } from "uuid";
 //import { v4 as uuidv4 } from 'uuid';
 
 export default function Home() {
   const [data, setData] = useState([{}]);
   const router = useRouter();
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const arrayOfSymbols = mockup.quoteResponse.result.map(
       (item: { symbol: string }) => item.symbol
     );
@@ -24,7 +26,7 @@ export default function Home() {
       method: "GET",
       headers: {
         "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
-        "X-RapidAPI-Key": "84a36f72e1msh8f6c1243d0f15b1p174e36jsn3340a0133497",
+        "X-RapidAPI-Key": process.env.NEXT_PUBLIC_YAHOO_API,
       },
     };
 
@@ -38,6 +40,11 @@ export default function Home() {
         console.log(response);
       })
       .catch((err) => console.error(err));
+  }, []); */
+
+  useEffect(() => {
+    //To avoid been request every time the page is loaded on test mode.
+    setData(resultMockup.quoteResponse.result);
   }, []);
 
   /*   2.1 - Na tela index  é preciso apresentar: Nome da Empresa, Ticker da Empresa, Preço Atual e Variação Atual. 
@@ -51,22 +58,22 @@ export default function Home() {
   5.3 - Preço Atual: Float com duas casas decimais. 
   5.4 - Variação: Float com duas casas decimais e % no final 
   */
-  //relative mx-2 mb-6 h-40 w-56 max-w-xs flex-shrink-0 overflow-hidden bg-gray-600 bg-cover bg-center shadow-xl drop-shadow-xl
+
   return (
     <div className="flex flex-col items-center p-4 min-w-full min-h-screen overflow-hidden justify-center bg-gray-400 space-y-10">
       {/* Title */}
       <h1 className="m-10 text-4xl font-bold text-center border-b-4 w-full">
         Welcome to the Stock Market
       </h1>
-      {/* <TopographicBackground /> */}
+      {/* <TopographicBackground />  */}
       <main>
-        <div className="flex w-full flex-grow flex-wrap items-center justify-center py-10 space-x-10">
+        <div className="flex w-full flex-grow flex-wrap items-center justify-center py-10 space-x-10 space-y-5">
           <div className="mb-10 w-full text-center text-3xl font-bold">
             <h1>Companies on Tracking list:</h1>
           </div>
           {data.map((item) => (
             <CompanyCard
-              key={uuid()}
+              key={uuidv4()}
               longName={item["longName"]}
               symbol={item["symbol"]}
               regularMarketPrice={item["regularMarketPrice"]}

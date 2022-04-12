@@ -5,32 +5,30 @@ function CompanyCard(props: any) {
   return (
     <a
       onClick={() => router.push(`/company/${props.symbol}`)}
-      key={props.key}
       target="_blank"
-      className="bg-gray-200 h-40 w-56"
+      className="h-40 w-56"
     >
-      <div className="relative h-40 w-56 max-w-xs flex-shrink-0 overflow-hidden rounded-lg bg-[url('/download2.png')] bg-no-repeat bg-contain bg-center shadow-xl drop-shadow-xl">
-        <div className="items-center justify-center opacity-0 hover:opacity-100">
-          SEE MORE DETAILS
-        </div>
-        <div className="h-full bg-gray-200 bg-opacity-85 backdrop-blur-[3px] duration-300 hover:opacity-10 hover:backdrop-blur-0">
-          <div className="relative flex flex-wrap items-center justify-center  ">
-            <div className="relative w-12">{props.symbol}</div>
-            <span className="flex-wrap-2 flex items-center bg-transparent bg-white bg-opacity-50 px-5 text-xs font-bold leading-none ">
-              <div className="relative w-8 animate-spin-slow">
-                {props.regularMarketChangePercent?.toFixed(2)}%
-              </div>
-              <div className="relative w-9 animate-spin-slow">
-                ${props.regularMarketChange?.toFixed(2)}
-              </div>
-            </span>
-          </div>
-          <div className="relative px-2 pb-2 text-black">
-            <span className="-mb-1 block opacity-75">{props.longName}</span>
-            <div className="flex justify-between">
-              <span className="block break-normal text-lg font-semibold">
+      <div className="relative h-40 w-56 max-w-xs flex-shrink-0 overflow-hidden bg-black bg-cover bg-center shadow-xl drop-shadow-xl rounded-sm">
+        <div className="h-full bg-gradient-to-r from-amber-400 via-yellow-500 to-yellow-600 backdrop-blur-[3px] duration-300 hover:ml-4 rounded-sm">
+          <div className="relative flex flex-col flex-wrap items-center justify-center  ">
+            <div className="flex justify-between mt-4 mx-4">
+              <span className="block break-normal text-base font-semibold">
                 {props.longName}
               </span>
+            </div>
+            <div className="relative text-sm">
+              Market Price: <b>{props.regularMarketPrice?.toFixed(2)}</b>
+            </div>
+            <div className="relative text-sm">
+              Ticket: <b>{props.symbol}</b>
+            </div>
+
+            <div className="text-sm">
+              Change in Percent:{" "}
+              <b>{props.regularMarketChangePercent?.toFixed(2)}%</b>
+            </div>
+            <div className="text-sm">
+              Change in Price: <b>${props.regularMarketChange?.toFixed(2)}</b>
             </div>
           </div>
         </div>
