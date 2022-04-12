@@ -6,28 +6,28 @@ function CompanyCard(props: any) {
     <a
       onClick={() => router.push(`/company/${props.symbol}`)}
       target="_blank"
-      className="h-40 w-56"
+      className="h-40 w-56 "
     >
       <div className="relative h-40 w-56 max-w-xs flex-shrink-0 overflow-hidden bg-black bg-cover bg-center shadow-xl drop-shadow-xl rounded-sm">
-        <div className="h-full bg-gradient-to-r from-amber-400 via-yellow-500 to-yellow-600 backdrop-blur-[3px] duration-300 hover:ml-4 rounded-sm">
-          <div className="relative flex flex-col flex-wrap items-center justify-center  ">
-            <div className="flex justify-between mt-4 mx-4">
+        <div className="h-full bg-gradient-to-r from-amber-400 via-yellow-500 to-yellow-600 dark:text-black dark:from-amber-500 dark:to-yellow-700  backdrop-blur-[3px] duration-300 hover:ml-4 rounded-sm">
+          <div className="relative flex flex-col flex-wrap items-left justify-center">
+            <div className="flex justify-between mt-4 mx-2 border-b border-gray-500 w-full mb-2">
               <span className="block break-normal text-base font-semibold">
                 {props.longName}
               </span>
             </div>
-            <div className="relative text-sm">
-              Market Price: <b>{props.regularMarketPrice?.toFixed(2)}</b>
+            <div className="relative text-sm mx-2">
+              Market Price: <b>${props.regularMarketPrice?.toFixed(2)}</b>
             </div>
-            <div className="relative text-sm">
+            <div className="relative text-sm mx-2">
               Ticket: <b>{props.symbol}</b>
             </div>
 
-            <div className="text-sm">
+            <div className="text-sm mx-2">
               Change in Percent:{" "}
               <b>{props.regularMarketChangePercent?.toFixed(2)}%</b>
             </div>
-            <div className="text-sm">
+            <div className="text-sm mx-2">
               Change in Price: <b>${props.regularMarketChange?.toFixed(2)}</b>
             </div>
           </div>

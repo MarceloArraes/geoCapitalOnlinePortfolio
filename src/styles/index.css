@@ -5,6 +5,11 @@
 
 @import "tailwindcss/utilities";
 
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: grey;
+}
+
 .container {
   position: absolute;
   top: 0;
@@ -24,4 +29,16 @@ svg {
   fill: none;
   stroke: rgba(0, 0, 0, 0.3);
   stroke-miterlimit: 10;
+}
+
+#title {
+  top: -999px;
+  position: fixed;
+  /* (C) CSS ANIMATION */
+  transition: all 1s;
+  visibility: hidden;
+}
+#title.show {
+  top: 5px;
+  visibility: visible;
 }
