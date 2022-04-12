@@ -10,6 +10,7 @@ import { useTheme } from "next-themes";
 import CardSkeleton from "../../components/skeleton";
 import AddInput from "../../components/addInput";
 import Footer from "../../components/footer";
+import Image from "next/image";
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
@@ -117,6 +118,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center p-4 min-w-full min-h-screen overflow-hidden justify-center bg-gray-400 dark:bg-gray-700 space-y-10">
+      {/* Header */}
+
       {/* Title */}
       <h1
         id="title"

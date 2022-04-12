@@ -1,5 +1,7 @@
 import { useState } from "react";
-
+//gray #cecbc5
+//orange #e5803d
+//dark-gray #1d1c1d
 function AddInput(props: any) {
   const [newTicker, setNewTicker] = useState("");
 
@@ -13,7 +15,7 @@ function AddInput(props: any) {
 
   return (
     <div className="relative w-full text-center">
-      <div className="flex flex-wrap flex-col m-3 xl:w-96 pt-10 items-center justify-center">
+      <div className="flex flex-wrap flex-col m-3 pt-10 items-center justify-center">
         <input
           type="text"
           className="
@@ -30,7 +32,7 @@ function AddInput(props: any) {
             transition
             ease-in-out
             mb-5
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+            focus:text-gray-700 focus:bg-white focus:border-[#e5803d] focus:outline-none  
           "
           value={newTicker}
           onChange={(e) => setNewTicker(e.target.value)}
@@ -39,7 +41,7 @@ function AddInput(props: any) {
         />
         <button
           type="button"
-          className="w-30 h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="w-30 h-10 items-center text-base justify-center bg-[#1d1c1d] hover:bg-[#e5803d] hover:text-[#1d1c1d] text-[#e5803d] font-serif py-2 px-4 rounded-full"
           onClick={handleSubmit}
         >
           Submit
