@@ -8,36 +8,36 @@ function CardSkeleton() {
               <div className="w-48 bg-gray-300 h-6 rounded-md animate-pulse"></div>
             </span>
           </div>
-          <div className="relative text-sm h-7 mx-2">
+          <div className="relative text-sm h-5 mx-2">
             <div
               style={{
                 animationDelay: "150ms",
               }}
-              className="w-48 bg-gray-300 h-6 rounded-md animate-pulse"
+              className="w-48 bg-gray-300 h-4 rounded-md animate-pulse"
             ></div>
           </div>
-          <div className="relative text-sm h-7 mx-2 ">
+          <div className="relative text-sm h-5 mx-2 ">
             <div
               style={{
                 animationDelay: "200ms",
               }}
-              className="w-40 bg-gray-300 h-6 rounded-md animate-pulse"
+              className="w-40 bg-gray-300 h-4 rounded-md animate-pulse"
             ></div>
           </div>
-          <div className="text-sm h-7 mx-2">
+          <div className="text-sm h-5 mx-2">
             <div
               style={{
                 animationDelay: "300ms",
               }}
-              className="w-28 bg-gray-300 h-6 rounded-md animate-pulse"
+              className="w-28 bg-gray-300 h-4 rounded-md animate-pulse"
             ></div>
           </div>
-          <div className="text-sm h-7 mx-2">
+          <div className="text-sm h-5 mx-2">
             <div
               style={{
                 animationDelay: "400ms",
               }}
-              className="w-32 bg-gray-300 h-6 rounded-md animate-pulse"
+              className="w-32 bg-gray-300 h-4 rounded-md animate-pulse"
             ></div>
           </div>
         </div>

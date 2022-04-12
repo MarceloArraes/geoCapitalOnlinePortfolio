@@ -8,24 +8,30 @@ import TopographicBackground from "../../components/topographicBackground";
 import { v4 as uuidv4 } from "uuid";
 import { useTheme } from "next-themes";
 import CardSkeleton from "../../components/skeleton";
-import { TIMEOUT } from "dns";
 import AddInput from "../../components/addInput";
 import Footer from "../../components/footer";
-//import { v4 as uuidv4 } from 'uuid';
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
   const [data, setData] = useState([{}]);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  //for testing:
+  const [symbols, setSymbols] = useState(["NKE", "MSFT", "DIS", "BUD", "AAPL"]);
+  const [addedSymbol, setAddedSymbol] = useState(false);
+  //For production:
+  //const [symbols, setSymbols] = useState([]);
 
-  /*   useEffect(() => {
+  //For production:
+  /* useEffect(() => {
     const arrayOfSymbols = mockup.quoteResponse.result.map(
       (item: { symbol: string }) => item.symbol
     );
-    const symbols = arrayOfSymbols.join("%2C");
+    setSymbols(arrayOfSymbols);
 
-    console.log(symbols);
+    const symbolsJoined = arrayOfSymbols.join("%2C");
+
+    console.log(symbolsJoined);
 
     console.log(arrayOfSymbols);
 
@@ -38,7 +44,7 @@ export default function Home() {
     };
 
     fetch(
-      `https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=${symbols}`,
+      `https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=${symbolsJoined}`,
       options
     )
       .then((response) => response.json())
@@ -48,17 +54,52 @@ export default function Home() {
         setLoading(false);
       })
       .catch((err) => console.error(err));
-  }, []); */
-
+  }, []);
+ */
+  //For testing:
   useEffect(() => {
     document.getElementById("title").classList.toggle("show");
-    //To avoid been request every time the page is loaded on test mode.
+    //To avoid making the API request every time the page is loaded on test mode.
     setTimeout(function () {
       console.log("Delay for test mode");
       setData(resultMockup.quoteResponse.result);
       setLoading(false);
     }, 3000);
   }, []);
+
+  //for production and testing :
+  useEffect(() => {
+    if (addedSymbol) {
+      //get last element of symbols array
+      console.log(
+        "The last element in symbols array is: " + symbols[symbols.length - 1]
+      );
+      console.log("Symbols array: " + symbols);
+
+      const lastSymbol = symbols[symbols.length - 1];
+
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
+          "X-RapidAPI-Key": process.env.NEXT_PUBLIC_YAHOO_API,
+        },
+      };
+
+      fetch(
+        `https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=${lastSymbol}`,
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          setData([...data, ...response.quoteResponse.result]);
+          console.log(response);
+          setLoading(false);
+          setAddedSymbol(false);
+        })
+        .catch((err) => console.error(err));
+    }
+  }, [addedSymbol]);
 
   /*   2.1 - Na tela index  é preciso apresentar: Nome da Empresa, Ticker da Empresa, Preço Atual e Variação Atual. 
       2.2 - Na tela de detalhe, uma vez que a empresa é selecionada, é preciso apresentar: 
@@ -110,7 +151,11 @@ export default function Home() {
         <div className="flex w-full flex-grow flex-wrap items-center justify-center py-10 space-x-10 space-y-5 pt-20">
           <div className="mb-10 w-full text-center text-3xl font-bold">
             <h1>Companies on Tracking list:</h1>
-            <AddInput />
+            <AddInput
+              symbols={symbols}
+              setSymbols={setSymbols}
+              setAddedSymbol={setAddedSymbol}
+            />
           </div>
 
           {loading ? (
@@ -138,13 +183,6 @@ export default function Home() {
             </>
           )}
         </div>
-        <button
-          type="button"
-          className="w-30 h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => router.push("/company/AAPL")}
-        >
-          Details - For testing now
-        </button>
       </main>
       <Footer />
     </div>
