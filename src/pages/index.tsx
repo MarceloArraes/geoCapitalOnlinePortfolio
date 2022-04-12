@@ -9,6 +9,8 @@ import { v4 as uuidv4 } from "uuid";
 import { useTheme } from "next-themes";
 import CardSkeleton from "../../components/skeleton";
 import { TIMEOUT } from "dns";
+import AddInput from "../../components/addInput";
+import Footer from "../../components/footer";
 //import { v4 as uuidv4 } from 'uuid';
 
 export default function Home() {
@@ -69,17 +71,19 @@ export default function Home() {
   5.3 - Preço Atual: Float com duas casas decimais. 
   5.4 - Variação: Float com duas casas decimais e % no final 
   */
+  //gray #cecbc5
+  //orange #e5803d
 
   return (
     <div className="flex flex-col items-center p-4 min-w-full min-h-screen overflow-hidden justify-center bg-gray-400 dark:bg-gray-700 space-y-10">
       {/* Title */}
       <h1
         id="title"
-        className="m-10 text-4xl font-bold text-center border-b-4 w-full"
+        className="top-0 m-10 text-4xl font-bold text-center border-b-4 w-full"
       >
         Stock Market
       </h1>
-      {/* <TopographicBackground />  */}
+      <TopographicBackground />
 
       <label
         htmlFor="toogleA"
@@ -103,10 +107,12 @@ export default function Home() {
       </label>
 
       <main>
-        <div className="flex w-full flex-grow flex-wrap items-center justify-center py-10 space-x-10 space-y-5">
+        <div className="flex w-full flex-grow flex-wrap items-center justify-center py-10 space-x-10 space-y-5 pt-20">
           <div className="mb-10 w-full text-center text-3xl font-bold">
             <h1>Companies on Tracking list:</h1>
+            <AddInput />
           </div>
+
           {loading ? (
             <>
               <CardSkeleton />
@@ -140,6 +146,7 @@ export default function Home() {
           Details - For testing now
         </button>
       </main>
+      <Footer />
     </div>
   );
 }

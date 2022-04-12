@@ -22,13 +22,11 @@ function CompanyCard(props: any) {
             <div className="relative text-sm mx-2">
               Ticket: <b>{props.symbol}</b>
             </div>
-
             <div className="text-sm mx-2">
-              Change in Percent:{" "}
-              <b>{props.regularMarketChangePercent?.toFixed(2)}%</b>
+              Change: <b>{props.regularMarketChange?.toFixed(2)}</b>
             </div>
             <div className="text-sm mx-2">
-              Change in Price: <b>${props.regularMarketChange?.toFixed(2)}</b>
+              % Change: <b>{props.regularMarketChangePercent?.toFixed(2)}%</b>
             </div>
           </div>
         </div>

@@ -64,8 +64,9 @@ function TopographicBackground() {
 
     window.addEventListener("resize", svgCover);
   }, []);
+
   return (
-    <div id="svg-container" className="container isolate">
+    <div id="svg-container" className="absolute top-0 overflow-hidden">
       <svg
         width="602"
         height="450"
@@ -81,7 +82,7 @@ function TopographicBackground() {
           d="M535.45 106.46s-5.75-14.25.25-27.5-8.25-21-10.75-23-26.75-10.75-51.25-52.5"
         />
         <path
-          className="line"
+          className="line line-2"
           data-name="line"
           d="M485.45 4.21s15.25 30 44.75 47.25c0 0 17.25 6.75 13.25 25.5s2 23.75 2 23.75"
         />
@@ -106,7 +107,7 @@ function TopographicBackground() {
           d="M499.2 4.21s7.75 21.5 37.5 41.25c0 0 10.5 5.25 15.75 22.75a67.14 67.14 0 0 0 11.25 17"
         />
         <path
-          className="line"
+          className="line line-2"
           data-name="line"
           d="M576.95 91.71s16 5.25 5.25 45c0 0-10 28.75 18.5 51"
         />
@@ -131,7 +132,7 @@ function TopographicBackground() {
           d="M567.95 74s-12-4.75-22.75-24.75c0 0-8-8.25-19.75-18S506.7 8 504.95 3.71"
         />
         <path
-          className="line"
+          className="line line-2"
           data-name="line"
           d="M511.95 4.21s3.75 18.5 23.75 30.5A46.12 46.12 0 0 1 549.45 46"
         />
@@ -161,7 +162,7 @@ function TopographicBackground() {
           d="M551.86 366.63a125.82 125.82 0 0 0 11.33 6.67c5.33 2.67 11.15 10.08-2.33 15.33-18.17 7.08-14.29 28.58-35.67 27-18.28-1.35-28.67-3-46 13 0 0-9 13.67-10.67 19.33"
         />
         <path
-          className="line"
+          className="line line-2"
           data-name="line"
           d="M551.45 4.21S527.45 23 547.7 32c0 0 11.25 2.25 14 8.5s1.75 20 21.25 21 18.25-1.25 18.25-1.25"
         />
@@ -213,7 +214,7 @@ function TopographicBackground() {
           d="M588.2 374.46a82.85 82.85 0 0 1 10.67-2.33"
         />
         <path
-          className="line"
+          className="line line-2"
           data-name="line"
           d="M598.36 387.13s-13.17 1-20.67 5.5"
         />
@@ -519,7 +520,7 @@ function TopographicBackground() {
           d="M117.2 367.8s23.5 13.67 44 12.33 31.8 4.17 31.8 4.17 12 8.17 30.33-4 30.67-27.33 16-37.83-40.33-8-40.33-8-30.5.83-50.17-10.17A26.47 26.47 0 0 1 138 310.46c-3.33-9.67-4.67-12.67-12.17-17.17"
         />
         <path
-          className="line"
+          className="line line-2"
           data-name="line"
           d="M111 288.46s-31-8.83-35-37-4.14-36.16-19.8-49.33-23.67-36.33-14.84-49.33 27-8.17 40.67-5.33 31 10.17 45.67 12.5"
         />
@@ -561,7 +562,7 @@ function TopographicBackground() {
           d="M50.7 76.71s-4.25-2.5-4.25-13.25S52.2 49 56.2 54.21s8.5 15.5 8.75 16.25 4.75 8 1.5 9.5"
         />
         <path
-          className="line"
+          className="line line-2"
           data-name="line"
           d="M62.95 88.71s-26-1.5-28.25-20 3.5-41.25 19.5-42c0 0 9.75-3.25 12.5 13.75s11.25 24 11.25 24S91.2 75 88.2 92.71c0 0-2.25 5.5-9.25 1.75"
         />
@@ -582,7 +583,7 @@ function TopographicBackground() {
           d="M2.2 87.46s33.75 25.5 63.5 33"
         />
         <path
-          className="line"
+          className="line line-2"
           data-name="line"
           d="M81.95 126s16.75 5.5 3.25 6-33.5-7.75-52 2.5-22 40.75-4.75 63.25 27.5 27.75 37.25 53.5 10.25 35.75 35.5 51.5"
         />
@@ -602,7 +603,7 @@ function TopographicBackground() {
           d="M121.2 354.71s27.75 23 75.5 20 40.75-21.5 40.75-21.5-1.75-10-27-9.75-51.5 2-74.75-23-34.75-28.75-34.75-28.75-23.75-7-30-42.5-27.25-49.5-27.25-49.5-31.25-34.75-8.25-54c0 0 14.75-17 48.5-4.5s33 10.5 33 10.5"
         />
         <path
-          className="line"
+          className="line line-2"
           data-name="line"
           d="M135.95 151.21s8.75-5-15-14a50.76 50.76 0 0 1-11.75-8.75c-5.75-5.75-20.75-10-20.75-10"
         />
@@ -633,7 +634,7 @@ function TopographicBackground() {
           d="M576.2 346s16.5 7.25 22.75 9.25"
         />
         <path
-          className="line"
+          className="line line-2"
           data-name="line"
           d="M563.45 335.46s-27.5-38.25-11.5-59.75a205 205 0 0 1 15.25-14.5c8-6.75 13-17.75 3.5-30 0 0-16.37-15.5-16.25-36.62 0 0-.25-8.37 2.63-14.37s4.88-23.75-4.5-24.75-12.5.13-21.75 2.13-16 .63-18-1.25"
         />
@@ -648,7 +649,7 @@ function TopographicBackground() {
           d="M599.2 312s-23.33-8-22.67-17.33 11.33-4 11.33-4 6.83 5 11.67 1.17"
         />
         <path
-          className="line"
+          className="line line-2"
           data-name="line"
           d="M600.45 233.71s-32.5-28.75-33-73.5c0 0 1.5-29-20.75-40.25"
         />

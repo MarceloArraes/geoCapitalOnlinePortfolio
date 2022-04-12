@@ -7,11 +7,13 @@
 
 input:checked ~ .dot {
   transform: translateX(100%);
-  background-color: grey;
+  background-color: #cecbc5;
 }
 
 .container {
   position: absolute;
+  margin: 0;
+  padding: 0;
   top: 0;
   left: 0;
   width: 100%;
@@ -20,7 +22,7 @@ input:checked ~ .dot {
 }
 
 svg {
-  display: block;
+  display: flex;
   width: 100%;
   height: auto;
   opacity: 0.4;
@@ -30,12 +32,16 @@ svg {
   stroke: rgba(0, 0, 0, 0.3);
   stroke-miterlimit: 10;
 }
+.line-2 {
+  stroke: #e5803d;
+}
 
 #title {
   top: -999px;
-  position: fixed;
+  position: absolute;
   /* (C) CSS ANIMATION */
-  transition: all 1s;
+  transition: all 1.3s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   visibility: hidden;
 }
 #title.show {
