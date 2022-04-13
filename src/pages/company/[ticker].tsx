@@ -9,9 +9,9 @@ import chartMockup from "../../../datamockup/chartMockup.json";
 function TICKER() {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
-  const [data, setData] = useState(chartMockup);
+  //for testing
+  //const [data, setData] = useState(chartMockup);
   const [exchange, setExchange] = useState("");
-  //const [data, setData] = useState();
 
   const {
     symbol,
@@ -21,7 +21,8 @@ function TICKER() {
     regularMarketPrice,
   } = router.query;
 
-  useEffect(() => {
+  //for testing:
+  /* useEffect(() => {
     document.getElementById("title").classList.toggle("show");
     StockChart(data);
     setExchange(data.chart.result[0].meta.exchangeName);
@@ -33,12 +34,16 @@ function TICKER() {
     } else {
       document.getElementById("MCPercent").classList.add("text-green-500");
     }
-    //production:
-    /*     const options = {
+  }, []); */
+
+  //for production:
+  useEffect(() => {
+    document.getElementById("title").classList.toggle("show");
+    const options = {
       method: "GET",
       headers: {
         "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
-        "X-RapidAPI-Key": "84a36f72e1msh8f6c1243d0f15b1p174e36jsn3340a0133497",
+        "X-RapidAPI-Key": process.env.NEXT_PUBLIC_YAHOO_API,
       },
     };
 
@@ -47,8 +52,21 @@ function TICKER() {
       options
     )
       .then((response) => response.json())
-      .then((response) => console.log(response))
-      .catch((err) => console.error(err)); */
+      .then((response) => {
+        console.log(response);
+        StockChart(response);
+        setExchange(response.chart.result[0].meta.exchangeName);
+      })
+      .catch((err) => console.error(err));
+
+    //casting string to number/float
+    var changePercent = +regularMarketChangePercent;
+
+    if (changePercent < 0) {
+      document.getElementById("MCPercent").classList.add("text-red-500");
+    } else {
+      document.getElementById("MCPercent").classList.add("text-green-500");
+    }
   }, []);
 
   //light-gray #cecbc5
@@ -95,8 +113,13 @@ function TICKER() {
             <h1>{longName}</h1>
 
             <div className="flex-col">
+              Exchange:{" "}
+              <p className="dark:text-[#cecbc5] text-[#1d1c1d]">{exchange}</p>
               Ticket:<p className="text-blue-500">{symbol} </p>
-              Price:<p className="">${regularMarketPrice}</p>
+              Price:
+              <p className="dark:text-[#cecbc5] text-[#1d1c1d]">
+                ${regularMarketPrice}
+              </p>
               <p id="MCPercent" className="flex-col">
                 {regularMarketChangePercent}%
               </p>

@@ -17,14 +17,15 @@ export default function Home() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   //for testing:
-  const [symbols, setSymbols] = useState(["NKE", "MSFT", "DIS", "BUD", "AAPL"]);
+  //const [symbols, setSymbols] = useState(["NKE", "MSFT", "DIS", "BUD", "AAPL"]);
   const [addedSymbol, setAddedSymbol] = useState(false);
   const [symbolNotFound, setSymbolNotFound] = useState(false);
   //For production:
-  //const [symbols, setSymbols] = useState([]);
+  const [symbols, setSymbols] = useState([]);
 
   //For production:
-  /* useEffect(() => {
+  useEffect(() => {
+    document.getElementById("title").classList.toggle("show");
     const arrayOfSymbols = mockup.quoteResponse.result.map(
       (item: { symbol: string }) => item.symbol
     );
@@ -56,9 +57,9 @@ export default function Home() {
       })
       .catch((err) => console.error(err));
   }, []);
- */
+
   //For testing:
-  useEffect(() => {
+  /*   useEffect(() => {
     document.getElementById("title").classList.toggle("show");
     //To avoid making the API request every time the page is loaded on test mode.
     setTimeout(function () {
@@ -66,7 +67,7 @@ export default function Home() {
       setData(resultMockup.quoteResponse.result);
       setLoading(false);
     }, 1000);
-  }, []);
+  }, []); */
 
   useEffect(() => {
     var mChange = document.querySelectorAll("#MChange");
