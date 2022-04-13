@@ -47,13 +47,6 @@ function TICKER() {
   //orange #e5803d
   //dark-gray #1d1c1d
 
-  /*
-  inputdata["Timestamp"] = parseTimestamp(retdata)
-
-    inputdata["Values"] = parseValues(retdata)
-
-    inputdata["Events"] = attachEvents(retdata) */
-
   return (
     <div className="flex flex-col items-center p-4 min-w-full min-h-screen overflow-hidden justify-center bg-gray-400 dark:bg-gray-700 space-y-10">
       {/* Header */}
@@ -63,7 +56,7 @@ function TICKER() {
         id="title"
         className="top-0 m-10 text-4xl font-bold text-center border-b-4 w-full"
       >
-        {longName} Stock Chart {symbol}
+        Stock Chart
       </h1>
       {/* <TopographicBackground /> */}
 
@@ -89,15 +82,21 @@ function TICKER() {
       </label>
 
       <main>
-        <div className="flex w-full flex-grow flex-wrap items-center justify-center py-10 space-x-10 space-y-5 pt-20">
-          <div className="mb-10 w-full text-center text-3xl font-bold">
-            <h1>Companies on Tracking list:</h1>
-          </div>
-          <div className="bg-[#cecbc5] shadow-lg rounded-lg overflow-hidden">
-            <div className="py-3 px-5 bg-[#cecbc5] text-[#1d1c1d] ">
-              Line chart
+        <div className="flex w-full flex-grow flex-wrap items-center justify-center py-10 space-y-5 pt-20">
+          <div className="mb-10 w-full text-center text-xl  font-bold">
+            <h1>{longName}</h1>
+
+            <div className="flex-col">
+              Ticket:<p className="text-blue">{symbol} </p>
+              Price:<p className="">${regularMarketPrice}</p>
+              <p className="flex-col">{regularMarketChangePercent}%</p>
             </div>
-            <canvas className="p-10" id="chartLine"></canvas>
+          </div>
+          <div className="bg-[#cecbc5] w-full shadow-lg rounded-lg overflow-hidden">
+            <div className="text-center mt-5 bg-[#cecbc5] text-[#1d1c1d] ">
+              {symbol} Price Chart. Interval: 1mo Range:1y
+            </div>
+            <canvas className="p-2" id="chartLine"></canvas>
           </div>
         </div>
       </main>

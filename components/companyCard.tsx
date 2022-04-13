@@ -10,7 +10,8 @@ function CompanyCard(props: any) {
           query: {
             symbol: props.symbol,
             longName: props.longName,
-            regularMarketChangePercent: props.regularMarketChangePercent,
+            regularMarketChangePercent:
+              props.regularMarketChangePercent?.toFixed(2),
             regularMarketChange: props.regularMarketChange,
             regularMarketPrice: props.regularMarketPrice,
           },

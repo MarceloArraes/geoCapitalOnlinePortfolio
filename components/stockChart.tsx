@@ -81,17 +81,18 @@ function StockChart(rawData: {
 }) {
   Chart.register(...registerables);
 
+  var canvas = document.getElementById("chartLine") as HTMLCanvasElement;
+  var widthRatio = 1.5;
+  canvas.width = canvas.height * widthRatio;
+
   var timestamp = rawData.chart.result[0].timestamp;
-  console.log(timestamp);
 
   var months = [];
   timestamp.map((t) => {
     var date = new Date(t * 1000);
-    console.log(date);
 
     months.push(MONTHS_NUMBER_TO_NAME_MAP[date.getMonth()]);
   });
-  console.log(months);
 
   const labels = months;
   const data = {

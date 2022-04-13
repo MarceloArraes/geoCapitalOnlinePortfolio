@@ -48,3 +48,6 @@ svg {
   top: 5px;
   visibility: visible;
 }
+#chartLine {
+  width: 100%;
+}
