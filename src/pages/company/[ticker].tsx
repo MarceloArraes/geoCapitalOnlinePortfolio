@@ -4,34 +4,56 @@ import { useTheme } from "next-themes";
 import TopographicBackground from "../../../components/topographicBackground";
 import Footer from "../../../components/footer";
 import StockChart from "../../../components/stockChart";
+import chartMockup from "../../../datamockup/chartMockup.json";
 
 function TICKER() {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
+  const [data, setData] = useState(chartMockup);
+  const [exchange, setExchange] = useState("");
+  //const [data, setData] = useState();
 
-  //Here is the chart fetching code:
-  /* const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
-      'X-RapidAPI-Key': '84a36f72e1msh8f6c1243d0f15b1p174e36jsn3340a0133497'
-    }
-  };
-  
-  fetch('https://yh-finance.p.rapidapi.com/stock/v3/get-chart?interval=1mo&symbol=AAPL&range=3mo&region=US&includePrePost=false&useYfid=true&includeAdjustedClose=true&events=capitalGain%2Cdiv%2Csplit', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err)); */
-
-  const ticker = router.query.ticker;
+  const {
+    symbol,
+    longName,
+    regularMarketChangePercent,
+    regularMarketChange,
+    regularMarketPrice,
+  } = router.query;
 
   useEffect(() => {
     document.getElementById("title").classList.toggle("show");
-    StockChart();
+    StockChart(data);
+    setExchange(data.chart.result[0].meta.exchangeName);
+    //production:
+    /*     const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
+        "X-RapidAPI-Key": "84a36f72e1msh8f6c1243d0f15b1p174e36jsn3340a0133497",
+      },
+    };
+
+    fetch(
+      `https://yh-finance.p.rapidapi.com/stock/v3/get-chart?interval=1mo&symbol=${symbol}&range=1y&region=US&includePrePost=false&useYfid=true&includeAdjustedClose=true&events=capitalGain%2Cdiv%2Csplit`,
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .catch((err) => console.error(err)); */
   }, []);
+
   //light-gray #cecbc5
   //orange #e5803d
   //dark-gray #1d1c1d
+
+  /*
+  inputdata["Timestamp"] = parseTimestamp(retdata)
+
+    inputdata["Values"] = parseValues(retdata)
+
+    inputdata["Events"] = attachEvents(retdata) */
+
   return (
     <div className="flex flex-col items-center p-4 min-w-full min-h-screen overflow-hidden justify-center bg-gray-400 dark:bg-gray-700 space-y-10">
       {/* Header */}
@@ -41,7 +63,7 @@ function TICKER() {
         id="title"
         className="top-0 m-10 text-4xl font-bold text-center border-b-4 w-full"
       >
-        {ticker} exploration
+        {longName} Stock Chart {symbol}
       </h1>
       {/* <TopographicBackground /> */}
 
@@ -72,7 +94,7 @@ function TICKER() {
             <h1>Companies on Tracking list:</h1>
           </div>
           <div className="bg-[#cecbc5] shadow-lg rounded-lg overflow-hidden">
-            <div className="py-3 px-5 bg-[#cecbc5] text-[#1d1c1d]">
+            <div className="py-3 px-5 bg-[#cecbc5] text-[#1d1c1d] ">
               Line chart
             </div>
             <canvas className="p-10" id="chartLine"></canvas>

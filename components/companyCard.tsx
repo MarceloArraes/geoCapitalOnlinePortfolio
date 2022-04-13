@@ -4,7 +4,22 @@ function CompanyCard(props: any) {
   const router = useRouter();
   return (
     <a
-      onClick={() => router.push(`/company/${props.symbol}`)}
+      onClick={() =>
+        router.push({
+          pathname: `/company/${props.symbol}`,
+          query: {
+            symbol: props.symbol,
+            longName: props.longName,
+            regularMarketChangePercent: props.regularMarketChangePercent,
+            regularMarketChange: props.regularMarketChange,
+            regularMarketPrice: props.regularMarketPrice,
+          },
+        })
+      }
+      /* router.push({
+      pathname: '/checkout',
+      query: { itens: itens, quantities: quantities, comentary: comentary } as any,
+    })  */
       target="_blank"
       className="h-40 w-56 "
     >

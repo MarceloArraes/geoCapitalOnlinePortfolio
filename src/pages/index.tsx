@@ -10,7 +10,6 @@ import { useTheme } from "next-themes";
 import CardSkeleton from "../../components/skeleton";
 import AddInput from "../../components/addInput";
 import Footer from "../../components/footer";
-import Image from "next/image";
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
@@ -66,7 +65,7 @@ export default function Home() {
       console.log("Delay for test mode");
       setData(resultMockup.quoteResponse.result);
       setLoading(false);
-    }, 3000);
+    }, 1000);
   }, []);
 
   //for production and testing :
