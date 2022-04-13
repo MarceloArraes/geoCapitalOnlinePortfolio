@@ -44,17 +44,25 @@ function Footer() {
               </svg>
               Assessoria de Imprensa
             </h6>
-            <p onClick={handleCopyClick}>leda@casadelascomunica.com.br</p>
-            <p onClick={handleCopyClick}>daniela@casadelascomunica.com.br</p>
-            <p onClick={handleCopyClick}>paula@casadelascomunica.com.br </p>
-            <p onClick={handleCopyClick}>+55 11 98405-1111</p>
+            <p className="cursor-pointer" onClick={handleCopyClick}>
+              leda@casadelascomunica.com.br
+            </p>
+            <p className="cursor-pointer" onClick={handleCopyClick}>
+              daniela@casadelascomunica.com.br
+            </p>
+            <p className="cursor-pointer" onClick={handleCopyClick}>
+              paula@casadelascomunica.com.br{" "}
+            </p>
+            <p className="cursor-pointer" onClick={handleCopyClick}>
+              +55 11 98405-1111
+            </p>
           </div>
           <div className="">
             <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
               Canal de Denúncia
             </h6>
             <p
-              className="flex items-center justify-center md:justify-start mb-4"
+              className="flex items-center justify-center md:justify-start mb-4 cursor-pointer"
               onClick={handleCopyClick}
             >
               <svg
@@ -79,7 +87,10 @@ function Footer() {
             <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
               Vamos conversar?
             </h6>
-            <p className="flex items-center justify-center md:justify-start mb-4">
+            <p
+              className="flex items-center justify-center md:justify-start mb-4 cursor-pointer"
+              onClick={handleCopyClick}
+            >
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -98,7 +109,7 @@ function Footer() {
               São Paulo - SP, 01455-000
             </p>
             <p
-              className="flex items-center justify-center md:justify-start mb-4"
+              className="flex items-center justify-center md:justify-start mb-4 cursor-pointer"
               onClick={handleCopyClick}
             >
               <svg
@@ -119,7 +130,7 @@ function Footer() {
               contato@geocapital.com.br
             </p>
             <p
-              className="flex items-center justify-center md:justify-start mb-4"
+              className="flex items-center justify-center md:justify-start mb-4 cursor-pointer"
               onClick={handleCopyClick}
             >
               <svg
@@ -140,7 +151,7 @@ function Footer() {
               +55 11 2612.6210
             </p>
             <p
-              className="flex items-center justify-center md:justify-start mb-4"
+              className="flex items-center justify-center md:justify-start mb-4 cursor-pointer"
               onClick={handleCopyClick}
             >
               <svg
@@ -161,7 +172,7 @@ function Footer() {
               +55 11 5555.4985
             </p>
           </div>
-          <div className="flex flex-row flex-wrap items-center justify-center">
+          <div className="flex flex-row flex-wrap items-center justify-center lg:justify-left">
             <a
               href="https://www.facebook.com/geocapitalbr"
               className="mr-6 text-gray-600"

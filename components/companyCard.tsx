@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 function CompanyCard(props: any) {
   const router = useRouter();
+
   return (
     <a
       onClick={() =>
@@ -17,12 +19,8 @@ function CompanyCard(props: any) {
           },
         })
       }
-      /* router.push({
-      pathname: '/checkout',
-      query: { itens: itens, quantities: quantities, comentary: comentary } as any,
-    })  */
       target="_blank"
-      className="h-40 w-56 "
+      className="h-40 w-56 m-5"
     >
       <div className="relative h-40 w-56 max-w-xs flex-shrink-0 overflow-hidden bg-[#1d1c1d] bg-cover bg-center shadow-xl drop-shadow-xl rounded-sm">
         <div className="h-full bg-gradient-to-r from-amber-400 via-yellow-500 to-yellow-600 dark:text-black dark:from-amber-500 dark:to-yellow-700  backdrop-blur-[3px] duration-300 hover:ml-4 rounded-sm">
@@ -35,14 +33,22 @@ function CompanyCard(props: any) {
             <div className="relative text-sm mx-2">
               Market Price: <b>${props.regularMarketPrice?.toFixed(2)}</b>
             </div>
-            <div className="relative text-sm mx-2">
-              Ticket: <b>{props.symbol}</b>
+            <div className="relative text-sm  mx-2">
+              Ticket: <b className="text-blue-800">{props.symbol}</b>
             </div>
             <div className="text-sm mx-2">
-              Change: <b>{props.regularMarketChange?.toFixed(2)}</b>
+              Change:{" "}
+              <b id="MChange">
+                {/* className="animate-pulse" */}
+                {props.regularMarketChange?.toFixed(2)}
+              </b>
             </div>
-            <div className="text-sm mx-2">
-              % Change: <b>{props.regularMarketChangePercent?.toFixed(2)}%</b>
+            <div className="text-sm mx-2 ">
+              % Change:{" "}
+              <b id="MChangePercent">
+                {/* className="animate-pulse" */}
+                {props.regularMarketChangePercent?.toFixed(2)}%
+              </b>
             </div>
           </div>
         </div>

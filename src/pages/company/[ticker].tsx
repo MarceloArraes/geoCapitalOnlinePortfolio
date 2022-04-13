@@ -25,6 +25,14 @@ function TICKER() {
     document.getElementById("title").classList.toggle("show");
     StockChart(data);
     setExchange(data.chart.result[0].meta.exchangeName);
+    //casting string to number/float
+    var changePercent = +regularMarketChangePercent;
+
+    if (changePercent < 0) {
+      document.getElementById("MCPercent").classList.add("text-red-500");
+    } else {
+      document.getElementById("MCPercent").classList.add("text-green-500");
+    }
     //production:
     /*     const options = {
       method: "GET",
@@ -87,9 +95,11 @@ function TICKER() {
             <h1>{longName}</h1>
 
             <div className="flex-col">
-              Ticket:<p className="text-blue">{symbol} </p>
+              Ticket:<p className="text-blue-500">{symbol} </p>
               Price:<p className="">${regularMarketPrice}</p>
-              <p className="flex-col">{regularMarketChangePercent}%</p>
+              <p id="MCPercent" className="flex-col">
+                {regularMarketChangePercent}%
+              </p>
             </div>
           </div>
           <div className="bg-[#cecbc5] w-full shadow-lg rounded-lg overflow-hidden">

@@ -68,6 +68,22 @@ export default function Home() {
     }, 1000);
   }, []);
 
+  useEffect(() => {
+    var mChange = document.querySelectorAll("#MChange");
+    var mChangePercent = document.querySelectorAll("#MChangePercent");
+    console.log("mChange", mChange);
+
+    data.map((item, index) => {
+      if (item["regularMarketChange"] > 0) {
+        mChange[index]?.classList.add("text-green-800");
+        mChangePercent[index]?.classList.add("text-green-800");
+      } else {
+        mChange[index]?.classList.add("text-red-800");
+        mChangePercent[index]?.classList.add("text-red-800");
+      }
+    });
+  }, [loading, addedSymbol]);
+
   //for production and testing :
   useEffect(() => {
     setSymbolNotFound(false);
@@ -170,7 +186,7 @@ export default function Home() {
       </label>
 
       <main>
-        <div className="flex w-full flex-grow flex-wrap items-center justify-center py-10 space-x-10 space-y-5 pt-20">
+        <div className="flex w-full flex-grow flex-wrap items-center justify-center py-10  space-y-5 pt-20">
           <div className="mb-10 w-full text-center text-3xl font-bold">
             <h1>Companies on Tracking list:</h1>
             <AddInput
