@@ -20,6 +20,7 @@ export default function Home() {
   //for testing:
   const [symbols, setSymbols] = useState(["NKE", "MSFT", "DIS", "BUD", "AAPL"]);
   const [addedSymbol, setAddedSymbol] = useState(false);
+  const [symbolNotFound, setSymbolNotFound] = useState(false);
   //For production:
   //const [symbols, setSymbols] = useState([]);
 
@@ -70,6 +71,7 @@ export default function Home() {
 
   //for production and testing :
   useEffect(() => {
+    setSymbolNotFound(false);
     if (addedSymbol) {
       //get last element of symbols array
       console.log(
@@ -93,12 +95,28 @@ export default function Home() {
       )
         .then((response) => response.json())
         .then((response) => {
-          setData([...data, ...response.quoteResponse.result]);
           console.log(response);
-          setLoading(false);
-          setAddedSymbol(false);
+          //hasOwnProperty quoteResponse.result[0].longName
+          if (response.quoteResponse.result[0].hasOwnProperty("longName")) {
+            setData([...data, ...response.quoteResponse.result]);
+            setLoading(false);
+            setAddedSymbol(false);
+          } else {
+            console.log("Symbol not found");
+            alert("Symbol not found");
+            //take out the last element of symbols array
+            setSymbols(symbols.slice(0, symbols.length - 1));
+            setAddedSymbol(false);
+            //create alert to the user that the symbol was not found
+            setSymbolNotFound(true);
+          }
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          setAddedSymbol(false);
+          setSymbols(symbols.slice(0, symbols.length - 1));
+          console.error(err);
+          alert("Symbol not found");
+        });
     }
   }, [addedSymbol]);
 
@@ -113,8 +131,10 @@ export default function Home() {
   5.3 - Preço Atual: Float com duas casas decimais. 
   5.4 - Variação: Float com duas casas decimais e % no final 
   */
+
   //gray #cecbc5
   //orange #e5803d
+  //dark-gray #1d1c1d
 
   return (
     <div className="flex flex-col items-center p-4 min-w-full min-h-screen overflow-hidden justify-center bg-gray-400 dark:bg-gray-700 space-y-10">

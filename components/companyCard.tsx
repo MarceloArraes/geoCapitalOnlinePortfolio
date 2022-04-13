@@ -8,7 +8,7 @@ function CompanyCard(props: any) {
       target="_blank"
       className="h-40 w-56 "
     >
-      <div className="relative h-40 w-56 max-w-xs flex-shrink-0 overflow-hidden bg-black bg-cover bg-center shadow-xl drop-shadow-xl rounded-sm">
+      <div className="relative h-40 w-56 max-w-xs flex-shrink-0 overflow-hidden bg-[#1d1c1d] bg-cover bg-center shadow-xl drop-shadow-xl rounded-sm">
         <div className="h-full bg-gradient-to-r from-amber-400 via-yellow-500 to-yellow-600 dark:text-black dark:from-amber-500 dark:to-yellow-700  backdrop-blur-[3px] duration-300 hover:ml-4 rounded-sm">
           <div className="relative flex flex-col flex-wrap items-left justify-center">
             <div className="flex justify-between mt-4 mx-2 border-b border-gray-500 w-full mb-2">

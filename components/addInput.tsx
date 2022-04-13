@@ -5,12 +5,17 @@ import { useState } from "react";
 function AddInput(props: any) {
   const [newTicker, setNewTicker] = useState("");
 
-  function handleSubmit(e) {
+  function handleSubmit(e: any) {
     console.log("handleSubmit");
-
-    props.setSymbols([...props.symbols, newTicker]);
-    props.setAddedSymbol(true);
-    console.log(newTicker);
+    if (newTicker.length === 0) {
+      alert("Please enter a ticker");
+      return;
+    } else {
+      props.setSymbols([...props.symbols, newTicker]);
+      props.setAddedSymbol(true);
+      setNewTicker("");
+      console.log(newTicker);
+    }
   }
 
   return (
@@ -41,7 +46,7 @@ function AddInput(props: any) {
         />
         <button
           type="button"
-          className="w-30 h-10 items-center text-base justify-center bg-[#1d1c1d] hover:bg-[#e5803d] hover:text-[#1d1c1d] text-[#e5803d] font-serif py-2 px-4 rounded-full"
+          className="w-30 h-10 duration-300 items-center text-base justify-center bg-[#1d1c1d] hover:bg-[#e5803d] hover:text-[#1d1c1d] text-[#e5803d] font-serif py-2 px-6 rounded-full"
           onClick={handleSubmit}
         >
           Submit
