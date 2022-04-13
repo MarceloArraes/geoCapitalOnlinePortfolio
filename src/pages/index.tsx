@@ -72,7 +72,6 @@ export default function Home() {
   useEffect(() => {
     var mChange = document.querySelectorAll("#MChange");
     var mChangePercent = document.querySelectorAll("#MChangePercent");
-    console.log("mChange", mChange);
 
     data.map((item, index) => {
       if (item["regularMarketChange"] > 0) {
@@ -93,7 +92,6 @@ export default function Home() {
       console.log(
         "The last element in symbols array is: " + symbols[symbols.length - 1]
       );
-      console.log("Symbols array: " + symbols);
 
       const lastSymbol = symbols[symbols.length - 1];
 
@@ -111,7 +109,6 @@ export default function Home() {
       )
         .then((response) => response.json())
         .then((response) => {
-          console.log(response);
           //hasOwnProperty quoteResponse.result[0].longName
           if (response.quoteResponse.result[0].hasOwnProperty("longName")) {
             setData([...data, ...response.quoteResponse.result]);
@@ -131,6 +128,7 @@ export default function Home() {
           setAddedSymbol(false);
           setSymbols(symbols.slice(0, symbols.length - 1));
           console.error(err);
+
           alert("Symbol not found");
         });
     }

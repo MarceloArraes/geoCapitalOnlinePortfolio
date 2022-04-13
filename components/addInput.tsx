@@ -6,15 +6,13 @@ function AddInput(props: any) {
   const [newTicker, setNewTicker] = useState("");
 
   function handleSubmit(e: any) {
-    console.log("handleSubmit");
     if (newTicker.length === 0) {
-      alert("Please enter a ticker");
+      alert("Symbol not found");
       return;
     } else {
       props.setSymbols([...props.symbols, newTicker]);
       props.setAddedSymbol(true);
       setNewTicker("");
-      console.log(newTicker);
     }
   }
 
