@@ -8,6 +8,8 @@ function AddInput(props: any) {
   function handleSubmit(e: any) {
     if (newTicker.length === 0) {
       alert("Symbol not found");
+      var input = document.getElementById("exampleText0");
+      input.classList.add("placeholder-red-600");
       return;
     } else {
       props.setSymbols([...props.symbols, newTicker]);

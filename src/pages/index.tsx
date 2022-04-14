@@ -89,9 +89,6 @@ export default function Home() {
     setSymbolNotFound(false);
     if (addedSymbol) {
       //get last element of symbols array
-      console.log(
-        "The last element in symbols array is: " + symbols[symbols.length - 1]
-      );
 
       const lastSymbol = symbols[symbols.length - 1];
 
@@ -115,8 +112,9 @@ export default function Home() {
             setLoading(false);
             setAddedSymbol(false);
           } else {
-            console.log("Symbol not found");
             alert("Symbol not found");
+            var input = document.getElementById("exampleText0");
+            input.classList.add("placeholder-red-600");
             //take out the last element of symbols array
             setSymbols(symbols.slice(0, symbols.length - 1));
             setAddedSymbol(false);
@@ -130,6 +128,8 @@ export default function Home() {
           console.error(err);
 
           alert("Symbol not found");
+          var input = document.getElementById("exampleText0");
+          input.classList.add("placeholder-red-600");
         });
     }
   }, [addedSymbol]);
