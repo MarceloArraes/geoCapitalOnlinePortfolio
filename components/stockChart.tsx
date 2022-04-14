@@ -112,6 +112,11 @@ function StockChart(rawData: {
     data,
     options: {},
   };
+  //Here i would call for a new canvas draw..
+  /*   window.addEventListener('resize', function (e) {
+    console.log('Window Resize...')
+    
+  }) */
 
   var chartLine = new Chart(
     document.getElementById("chartLine") as HTMLCanvasElement,

@@ -125,7 +125,7 @@ function TICKER() {
               </p>
             </div>
           </div>
-          <div className="bg-[#cecbc5] w-full shadow-lg rounded-lg overflow-hidden">
+          <div className="bg-[#cecbc5] w-full sm:w-[75%] shadow-lg rounded-lg overflow-hidden">
             <div className="text-center mt-5 bg-[#cecbc5] text-[#1d1c1d] ">
               {symbol} Price Chart. Interval: 1mo Range:1y
             </div>

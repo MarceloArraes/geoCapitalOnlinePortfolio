@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <ThemeProvider attribute="class">
         <Head>
-          <title>NextJS TailwindCSS TypeScript Starter</title>
+          <title>GeoCapital Stock Tracker</title>
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width"

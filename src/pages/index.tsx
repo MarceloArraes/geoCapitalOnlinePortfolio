@@ -59,7 +59,7 @@ export default function Home() {
   }, []);
 
   //For testing:
-  /*   useEffect(() => {
+  /* useEffect(() => {
     document.getElementById("title").classList.toggle("show");
     //To avoid making the API request every time the page is loaded on test mode.
     setTimeout(function () {
@@ -134,18 +134,6 @@ export default function Home() {
     }
   }, [addedSymbol]);
 
-  /*   2.1 - Na tela index  é preciso apresentar: Nome da Empresa, Ticker da Empresa, Preço Atual e Variação Atual. 
-      2.2 - Na tela de detalhe, uma vez que a empresa é selecionada, é preciso apresentar: 
-      Nome da Empresa, Ticker da Empresa, Bolsa de Valores em que a Empresa está listada, Preço Atual e Variação Atual.
- */
-
-  /* 5 - Apresentação dos dados: 
-  5.1 - Nome da Empresa: Nome Completo na tela. 
-  5.2 - Ticker: Todos os caracteres na tela. 
-  5.3 - Preço Atual: Float com duas casas decimais. 
-  5.4 - Variação: Float com duas casas decimais e % no final 
-  */
-
   //gray #cecbc5
   //orange #e5803d
   //dark-gray #1d1c1d
@@ -157,7 +145,7 @@ export default function Home() {
       {/* Title */}
       <h1
         id="title"
-        className="top-0 m-10 text-4xl font-bold text-center border-b-4 w-full"
+        className="top-0 m-10 text-4xl font-bold text-center border-b-4 w-full font-serif"
       >
         Stock Market
       </h1>
@@ -185,9 +173,9 @@ export default function Home() {
       </label>
 
       <main>
-        <div className="flex w-full flex-grow flex-wrap items-center justify-center py-10  space-y-5 pt-20">
+        <div className="flex w-full flex-grow flex-wrap items-center justify-center py-40  space-y-5 pt-20">
           <div className="mb-10 w-full text-center text-3xl font-bold">
-            <h1>Companies on Tracking list:</h1>
+            <h1>Companies on Track list:</h1>
             <AddInput
               symbols={symbols}
               setSymbols={setSymbols}
